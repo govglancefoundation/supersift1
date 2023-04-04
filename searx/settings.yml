@@ -2,31 +2,31 @@ general:
   # Debug mode, only for development. Is overwritten by ${SEARXNG_DEBUG}
   debug: false
   # displayed name
-  instance_name: "SearXNG"
+  instance_name: "Super Sift"
   # For example: https://example.com/privacy
   privacypolicy_url: false
   # use true to use your own donation page written in searx/info/en/donate.md
   # use false to disable the donation link
-  donation_url: https://docs.searxng.org/donate.html
+  donation_url: https://checkout.stripe.com/c/pay/cs_live_a1vdPwL07zHtK6KWUeFwfHHbPknW834GPpxjFCngWHUpCsPJgGOJXn7rS0#fidkdWxOYHwnPyd1blppbHNgWjA0SWxfTnJPbko9Nk1rbE52MUtgS2NMc0Q3VnQxMXw8fzQ1ZDNfPHR8dlN1ZzJ3dWwxT3FVfEZSf0ZialRRU2Nnc39SdTBnfVV0QGkwa3dMYF1xaW5yUUhfNTVOc0s3N21uSScpJ3VpbGtuQH11anZgYUxhJz8nNz1qNmNdZ2FzZ1RKN1dKNz09Jyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmJqc2JpZGtmYCtqd2IqJ3gl
   # mailto:contact@example.com
   contact_url: false
   # record stats
   enable_metrics: true
 
 brand:
-  new_issue_url: https://github.com/searxng/searxng/issues/new
-  docs_url: https://docs.searxng.org/
-  public_instances: https://searx.space
-  wiki_url: https://github.com/searxng/searxng/wiki
-  issue_url: https://github.com/searxng/searxng/issues
+  new_issue_url: false
+  docs_url: false
+  public_instances: false
+  wiki_url: false #https://github.com/searxng/searxng/wiki
+  issue_url: false #https://github.com/searxng/searxng/issues
 
 search:
   # Filter results. 0: None, 1: Moderate, 2: Strict
-  safe_search: 0
+  safe_search: 1
   # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "yandex",
   # "seznam", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off
   # by default.
-  autocomplete: ""
+  autocomplete: "duckduckgo"
   # minimun characters to type before autocompleter starts
   autocomplete_min: 4
   # Default search language - leave blank to detect from browser information or
@@ -62,7 +62,8 @@ search:
   # remove format to deny access, use lower case.
   # formats: [html, csv, json, rss]
   formats:
-    - html
+    - html 
+    # - rss
 
 server:
   # If you change port, bind_address or base_url don't forget to rebuild
@@ -283,13 +284,13 @@ categories_as_tabs:
   general:
   images:
   videos:
-  news:
+  news: false
   map:
   music:
-  it:
+  it: false
   science:
   files:
-  social media:
+  social media: false
 
 engines:
   - name: 9gag
@@ -496,7 +497,7 @@ engines:
     shortcut: da
     timeout: 3.0
 
-  - name: ddg definitions
+g  - name: ddg definitions
     engine: duckduckgo_definitions
     shortcut: ddd
     weight: 2
@@ -574,7 +575,7 @@ engines:
   - name: apple maps
     engine: apple_maps
     shortcut: apm
-    disabled: true
+    disabled: false
     timeout: 5.0
 
   - name: emojipedia
@@ -734,6 +735,7 @@ engines:
   - name: google
     engine: google
     shortcut: go
+    disabled: true
     # additional_tests:
     #   android: *test_android
 
@@ -852,7 +854,7 @@ engines:
     engine: imdb
     shortcut: imdb
     timeout: 6.0
-    disabled: true
+    disabled: false
 
   - name: ina
     engine: ina
@@ -1526,7 +1528,7 @@ engines:
     url_query: url
     content_query: snippet
     timeout: 1.5
-    disabled: true
+    disabled: false
     about:
       website: https://alexandria.org/
       official_api_documentation: https://github.com/alexandria-org/alexandria-api/raw/master/README.md
@@ -1541,7 +1543,7 @@ engines:
     base_url: "https://{language}.wikibooks.org/"
     number_of_results: 5
     search_type: text
-    disabled: true
+    disabled: false
     about:
       website: https://www.wikibooks.org/
       wikidata_id: Q367
@@ -1853,7 +1855,7 @@ engines:
       month: 'pm'
       year: 'py'
     categories: [general, web]
-    disabled: true
+    disabled: false
     headers:
       Accept-Encoding: gzip, deflate
     about:
