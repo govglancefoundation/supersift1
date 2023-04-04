@@ -1,73 +1,46 @@
-# Sintaks pencarian
+# Search syntax
 
-SearXNG mempunyai sintaks pencarian memungkinkan Anda untuk mengubah kategori,
-mesin pencari, bahasa dan lainnya.  Lihat {{link('preferensi', 'preferences')}}
-untuk daftar mesin pencari, kategori dan bahasa.
+Super Sift comes with a search syntax by with you can modify the categories, engines, languages and more. See the {{link('preferences', 'preferences')}} for the list of engines, categories and languages.
 
-## `!` pilih mesin pencari dan kategori
+## `!` select engine and category
 
-Untuk menetapkan nama kategori dan/atau mesin pencari gunakan awalan `!`.
-Sebagai contoh:
+To set category and/or engine names use a `!` prefix. To give a few examples:
 
-- cari di Wikipedia tentang **Jakarta**
+- search in Wikipedia for **paris**
+    - {{search('!wp paris')}}
+    - {{search('!wikipedia paris')}}
+- search in category **map** for **paris**
+    - {{search('!map paris')}}
+- image search
+    - {{search('!images Wau Holland')}}
 
-  - {{search('!wp Jakarta')}}
-  - {{search('!wikipedia Jakarta')}}
+Abbreviations of the engines and languages are also accepted. Engine/category modifiers are chain able and inclusive. E.g. with {{search('!map !ddg !wp paris')}} search in map category and DuckDuckGo and Wikipedia for **paris**.
 
-- cari dalam kategori **peta** untuk **Jakarta**
+## `:` select language
 
-  - {{search('!map Jakarta')}}
+To select language filter use a `:` prefix. To give an example:
 
-- pencarian gambar
+- search Wikipedia by a custom language
+    - {{search(':fr !wp Wau Holland')}}
 
-  - {{search('!images kucing')}}
+## `!!` external bangs
 
-Singkatan mesin pencari dan bahasa juga diterima.  Pengubah mesin/kategori dapat
-dirantai dan inklusif.  Misalnya dengan pencarian {{search('!map !ddg !wp
-Jakarta')}} dalam kategori peta dan DuckDuckGo dan Wikipedia tentang
-**Jakarta**.
+Super Sift supports the external bangs from [DuckDuckGo](https://duckduckgo.com/bang). To directly jump to a external search page use the `!!` prefix. To give an example:
 
-## `:` pilih bahasa
+- search Wikipedia by a custom language
+    - {{search('!!wfr Wau Holland')}}
 
-Untuk memilih saringan bahasa gunakan awalan `:`.  Sebagai contoh:
+Please note, your search will be performed directly in the external search engine, Super Sift cannot protect your privacy on this.
 
-- cari Wikipedia dengan bahasa lain
+## Special Queries
 
-  - {{search(':en !wp Jakarta')}}
+In the {{link('preferences', 'preferences')}} page you find keywords for *special queries*. To give a few examples:
 
-## `!!` mesin pencarian (*bangs*) eksternal
-
-SearXNG mendukung mesin pencarian eksternal (*bangs*) dari [DuckDuckGo].  Untuk
-langsung lompat ke sebuah laman pencarian eksternal gunakan awalan `!!`.
-Sebagai contoh:
-
-- cari Wikipedia dengan bahasa yang lain
-
-  - {{search('!!wen cat')}}
-
-Diingat, pencarian Anda akan dilakukan secara langsung di mesin pencari
-eksternal, SearXNG tidak dapat melindungi privasi Anda di sana.
-
-[DuckDuckGo]: https://duckduckgo.com/bang
-
-## Kueri Khusus
-
-Dalam laman {{link('preferensi', 'preferences')}} Anda akan menemukan kata kunci
-_kueri khusus_.  Sebagai contoh:
-
-- buat sebuah UUID acak
-
-  - {{search('random uuid')}}
-
-- temukan rata-rata
-
-  - {{search('avg 123 548 2.04 24.2')}}
-
-- tampilkan _user agent_ (agen pengguna) dari peramban Anda (harus diaktifkan)
-
-  - {{search('user-agent')}}
-
-- ubah _string_ (teks) ke intisari *hash* yang berbeda (harus diaktifkan)
-
-  - {{search('md5 kucing sphynx')}}
-  - {{search('sha512 kucing sphynx')}}
+- generate a random UUID
+    - {{search('random uuid')}}
+- find the average
+    - {{search('avg 123 548 2.04 24.2')}}
+- show *user agent* of your browser (needs to be activated)
+    - {{search('user-agent')}}
+- convert strings to different hash digests (needs to be activated)
+    - {{search('md5 lorem ipsum')}}

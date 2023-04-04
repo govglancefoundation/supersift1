@@ -1,77 +1,46 @@
-# Suchbegriffe
+# Search syntax
 
-SearXNG verfügt über eine Syntax mit der in einer Suchanfrage die Kategorien,
-Suchmaschinen, Sprachen und mehr geändert werden können.  In den
-{{link('Eigenschaften','preferences')}} sind die Kategorien, Suchmaschinen und
-Sprachen zu finden, die zur Verfügung stehen.
+Super Sift comes with a search syntax by with you can modify the categories, engines, languages and more. See the {{link('preferences', 'preferences')}} for the list of engines, categories and languages.
 
-## `!` Suchmaschine und Kategorie auswählen
+## `!` select engine and category
 
-Zum Festlegen von Kategorie- und/oder Suchmaschinen dient das Präfix `!`.  Um
-ein paar Beispiele zu geben:
+To set category and/or engine names use a `!` prefix. To give a few examples:
 
-- in der Wikipedia nach dem Begriff **paris** suchen
+- search in Wikipedia for **paris**
+    - {{search('!wp paris')}}
+    - {{search('!wikipedia paris')}}
+- search in category **map** for **paris**
+    - {{search('!map paris')}}
+- image search
+    - {{search('!images Wau Holland')}}
 
-  - {{search('!wp paris')}}
-  - {{search('!wikipedia paris')}}
+Abbreviations of the engines and languages are also accepted. Engine/category modifiers are chain able and inclusive. E.g. with {{search('!map !ddg !wp paris')}} search in map category and DuckDuckGo and Wikipedia for **paris**.
 
-- in der Kategorie **Karte** nach dem Begriff **paris** suchen:
+## `:` select language
 
-  - {{search('!map paris')}}
+To select language filter use a `:` prefix. To give an example:
 
-- in der Kategorie **Bilder** suchen
+- search Wikipedia by a custom language
+    - {{search(':fr !wp Wau Holland')}}
 
-  - {{search('!images Wau Holland')}}
+## `!!` external bangs
 
-Abkürzungen der Suchmaschinen und Kategorien sind ebenfalls möglich und können
-auch kombiniert werden.  So wird z.B. mit {{search('!map !ddg !wp paris')}} in
-der Kategorie **Karte** als auch mit den Suchmaschinen DuckDuckGo und Wikipedia
-nach dem Begriff **paris** gesucht.
+Super Sift supports the external bangs from [DuckDuckGo](https://duckduckgo.com/bang). To directly jump to a external search page use the `!!` prefix. To give an example:
 
-## `:` Sprache auswählen
+- search Wikipedia by a custom language
+    - {{search('!!wfr Wau Holland')}}
 
-Um einen Sprachfilter auszuwählen, verwenden Sie das Präfix`:`.  Um ein
-einfaches Beispiel zu geben:
+Please note, your search will be performed directly in the external search engine, Super Sift cannot protect your privacy on this.
 
-- Wikipedia mit einer benutzerdefinierten Sprache durchsuchen
+## Special Queries
 
-  - {{search(':de !wp Wau Holland')}}
+In the {{link('preferences', 'preferences')}} page you find keywords for *special queries*. To give a few examples:
 
-## `!!` external bangs
-
-SearXNG unterstützt die _external bangs_ von [ddg].  Das Präfix `!!` kann
-verwendet werden um direkt zu einer externen Suchseite zu springen.  Um ein
-Beispiel zu geben:
-
-- In Wikipedia mit einer benutzerdefinierten Sprache eine Suche durchführen
-
-  - {{search('!!wde Wau Holland')}}
-
-Bitte beachten; die Suche wird direkt in der externen Suchmaschine durchgeführt.
-SearXNG kann die Privatsphäre des Benutzers in diesem Fall nur eingeschränkt
-schützen, dennoch wird diese Funktion von manchen Benutzern als sehr nützlich
-empfunden.
-
-[ddg]: https://duckduckgo.com/bang
-
-## Besondere Abfragen
-
-In den {{link('Eigenschaften', 'preferences')}} finden sich Schlüsselwörter für
-_besondere Abfragen_.  Um ein paar Beispiele zu geben:
-
-- Zufallsgenerator für eine UUID
-
-  - {{search('random uuid')}}
-
-- Bestimmung des Mittelwerts
-
-  - {{search('avg 123 548 2.04 24.2')}}
-
-- anzeigen des _user agent_ Ihres WEB-Browsers (muss aktiviert sein)
-
-  - {{search('user-agent')}}
-
-- Zeichenketten in verschiedene Hash-Digests umwandeln  (muss aktiviert sein)
-
-  - {{search('md5 lorem ipsum')}}
-  - {{search('sha512 lorem ipsum')}}
+- generate a random UUID
+    - {{search('random uuid')}}
+- find the average
+    - {{search('avg 123 548 2.04 24.2')}}
+- show *user agent* of your browser (needs to be activated)
+    - {{search('user-agent')}}
+- convert strings to different hash digests (needs to be activated)
+    - {{search('md5 lorem ipsum')}}
